@@ -1,19 +1,16 @@
 const express = require("express");
-app.use(express.static("./public"));
-
-require("dotenv").config();
+const app = express();
 const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 
-const app = express();
-app.use(cors());
-app.use(express.static("public"));
+app.use(express.static("./public"));
 app.use(express.json());
 
-app.use(cors({
-  origin: 'https://candid-toffee-fe984e.netlify.app/'
-}));
-
+app.use(
+  cors({
+    origin: 'https://candid-toffee-fe984e.netlify.app',
+  })
+);
 
 app.post("/checkout", async (req, res) => {
   console.log(req.body);
