@@ -1,4 +1,6 @@
 const express = require("express");
+app.use(express.static("./public"));
+
 require("dotenv").config();
 var cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_KEY);
